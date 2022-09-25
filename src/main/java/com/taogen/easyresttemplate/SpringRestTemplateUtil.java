@@ -163,10 +163,10 @@ public class SpringRestTemplateUtil {
     }
     private static HttpHeaders convertMapToHeaders(
             Map<String, List<Object>> map) {
-        if (CollectionUtils.isEmpty(map)) {
-            return null;
-        }
         HttpHeaders httpHeaders = new HttpHeaders();
+        if (CollectionUtils.isEmpty(map)) {
+            return httpHeaders;
+        }
         for (Map.Entry<String, List<Object>> entry : map.entrySet()) {
             for (Object value : entry.getValue()) {
                 httpHeaders.add(entry.getKey(), Objects.toString(value));
